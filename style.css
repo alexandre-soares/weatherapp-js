@@ -6,10 +6,26 @@
 
 body {
 	font-family: "Roboto";
-	background-image: url("./bg.jpg");
+	background-image: url("./backgrounds/bg.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: top;
+}
+
+.rain {
+	background-image: url("./backgrounds/rain.jpg");
+}
+
+.sunny {
+	background-image: url("./backgrounds/sunny.jpg");
+}
+
+.clouds {
+	background-image: url("./backgrounds/clouds.jpg");
+}
+
+.clear {
+	background-image: url("./backgrounds/clear.jpg");
 }
 
 .app-wrap {
