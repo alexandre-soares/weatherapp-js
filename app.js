@@ -10,6 +10,24 @@ const body = document.querySelector('.body')
 
 const errorContent = document.querySelector('.error-content')
 
+// Geolocalisation
+
+if ("geolocation" in navigator) {
+
+	navigator.geolocation.getCurrentPosition(showcityname);
+
+	function showcityname(position) {
+		var lat = position.coords.latitude;
+		var longit = position.coords.longitude;
+
+		fetch(`${api.base}weather?lat=${lat}&lon=${longit}&units=metric&APPID=${api.key}`)
+			.then((weather) => {
+				return weather.json();
+			})
+			.then(displayResults);
+	}
+}
+
 function setQuery(evt) {
 	if (evt.keyCode == 13) {
 		getResults(searchbox.value);
@@ -118,3 +136,4 @@ function dateBuilder(d) {
 
 	return `${day} ${date} ${month} ${year}`;
 }
+
