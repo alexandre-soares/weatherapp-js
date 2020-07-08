@@ -8,6 +8,8 @@ searchbox.addEventListener("keypress", setQuery);
 
 const body = document.querySelector('.body')
 
+const errorContent = document.querySelector('.error-content')
+
 function setQuery(evt) {
 	if (evt.keyCode == 13) {
 		getResults(searchbox.value);
@@ -24,6 +26,17 @@ function getResults(query) {
 }
 
 function displayResults(weather) {
+	errorContent.innerHTML = "";
+
+	if (weather.cod == 404) {
+
+		// create error message
+		const errorMessage = document.createElement("p");
+		errorMessage.innerHTML = 'Sorry, but we didn\'t found the city you are looking for';
+		errorMessage.classList.add("error-message");
+		errorContent.appendChild(errorMessage);
+	}
+
 	let city = document.querySelector(".location .city");
 	city.innerText = `${weather.name}, ${weather.sys.country}`;
 
